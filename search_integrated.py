@@ -7,11 +7,11 @@ from googleapiclient.discovery import build
 CHROMA_DB_PATH = "./chroma_db_data"
 
 # Google Gemini API Key
-GEMINI_API_KEY = "AIzaSyD5eTn0XkIR6ui7f0L8PZUJ6bbfPrqs30Y"
+GEMINI_API_KEY = "AIzaSyBPtUpfMu9S-nAgPS1SpnFYwnL1Ni0K7dE"
 
 # Google Custom Search API Credentials
-GOOGLE_API_KEY = "AIzaSyB1no1FwjzfW6ylAC1QKJ4VF4io3JGc4Ck"
-GOOGLE_CSE_ID = "84748ce892e554a36" # Keep your actual CX ID here
+GOOGLE_API_KEY = "AIzaSyDhQRS0tccUHDoGMlxl7OUccsvDVcKqkkQ"
+GOOGLE_CSE_ID = "336fd9d8ab2a34781" # Keep your actual CX ID here
 
 # Configure the Google Generative AI client
 if GEMINI_API_KEY and GEMINI_API_KEY != "YOUR_GEMINI_API_KEY":
