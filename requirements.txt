@@ -1,4 +1,4 @@
 streamlit
 chromadb
-fitz
+tiktoken==0.5.1
 genai
