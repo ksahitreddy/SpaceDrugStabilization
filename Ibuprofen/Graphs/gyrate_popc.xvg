@@ -1,0 +1,38 @@
+# This file was created Wed Jun 11 14:43:55 2025
+# Created by:
+#              :-) GROMACS - gmx gyrate, 2021.4-Ubuntu-2021.4-2 (-:
+# 
+# Executable:   /usr/bin/gmx
+# Data prefix:  /usr
+# Working dir:  /home/sahit/IDP/Drug Mols 3D/Ibuprofen/charmm-gui-4957825172/gromacs
+# Command line:
+#   gmx gyrate -s md_0_1.tpr -f md.xtc -o gyrate.xvg
+# gmx gyrate is part of G R O M A C S:
+#
+# Gromacs Runs On Most of All Computer Systems
+#
+@    title "Radius of gyration (total and around axes)"
+@    xaxis  label "Time (ps)"
+@    yaxis  label "Rg (nm)"
+@TYPE xy
+@ view 0.15, 0.15, 0.75, 0.85
+@ legend on
+@ legend box on
+@ legend loctype view
+@ legend 0.78, 0.8
+@ legend length 2
+@ s0 legend "Rg"
+@ s1 legend "Rg\sX\N"
+@ s2 legend "Rg\sY\N"
+@ s3 legend "Rg\sZ\N"
+         0    0.317373    0.299025    0.302203    0.143906
+       100    0.319135    0.267443    0.303284    0.200468
+       200    0.324738    0.307107    0.311833    0.139122
+       300    0.340574    0.328319    0.322749    0.141494
+       400    0.321792    0.263317    0.304488    0.212254
+       500    0.329246    0.297994    0.316034    0.167712
+       600    0.326477    0.281905    0.296722    0.213683
+       700    0.333148    0.305242    0.311316    0.178564
+       800    0.323896    0.301643    0.242556    0.244939
+       900    0.322579    0.295341    0.285916    0.197838
+      1000    0.323886    0.304872    0.245089    0.238306

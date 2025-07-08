@@ -1,0 +1,29 @@
+# This file was created Wed Jun 11 14:40:23 2025
+# Created by:
+#               :-) GROMACS - gmx rms, 2021.4-Ubuntu-2021.4-2 (-:
+# 
+# Executable:   /usr/bin/gmx
+# Data prefix:  /usr
+# Working dir:  /home/sahit/IDP/Drug Mols 3D/Ibuprofen/charmm-gui-4957825172/gromacs
+# Command line:
+#   gmx rms -s md_0_1.tpr -f md.xtc -o rmsd.xvg -tu ns
+# gmx rms is part of G R O M A C S:
+#
+# GRoups of Organic Molecules in ACtion for Science
+#
+@    title "RMSD"
+@    xaxis  label "Time (ns)"
+@    yaxis  label "RMSD (nm)"
+@TYPE xy
+@ subtitle "IBU after lsq fit to IBU"
+   0.0000000    0.0000003
+   0.1000000    0.1562158
+   0.2000000    0.1849426
+   0.3000000    0.1789577
+   0.4000000    0.1561652
+   0.5000000    0.1505441
+   0.6000000    0.1737289
+   0.7000000    0.1858768
+   0.8000000    0.1266476
+   0.9000000    0.0997244
+   1.0000000    0.0933728

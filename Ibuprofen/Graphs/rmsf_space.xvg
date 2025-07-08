@@ -1,0 +1,50 @@
+# This file was created Sun Jul  6 15:05:04 2025
+# Created by:
+#               :-) GROMACS - gmx rmsf, 2021.4-Ubuntu-2021.4-2 (-:
+# 
+# Executable:   /usr/bin/gmx
+# Data prefix:  /usr
+# Working dir:  /home/sahit/IDP/Drug Mols 3D/Ibuprofen/Space
+# Command line:
+#   gmx rmsf -s md.gro -f md.xtc -o rmsf.xvg
+# gmx rmsf is part of G R O M A C S:
+#
+# Georgetown Riga Oslo Madrid Amsterdam Chisinau Stockholm
+#
+@    title "RMS fluctuation"
+@    xaxis  label "Atom"
+@    yaxis  label "(nm)"
+@TYPE xy
+    1   0.7128
+    2   0.6856
+    3   0.5804
+    4   0.5886
+    5   0.5672
+    6   0.6052
+    7   0.6445
+    8   0.6532
+    9   0.6658
+   10   0.5979
+   11   0.6220
+   12   0.6117
+   13   0.6616
+   14   0.6836
+   15   0.6407
+   16   0.7525
+   17   0.6716
+   18   0.6902
+   19   0.7769
+   20   0.8071
+   21   0.8090
+   22   0.7461
+   23   0.7466
+   24   0.7604
+   25   0.7312
+   26   0.6302
+   27   0.7506
+   28   0.6650
+   29   0.8191
+   30   0.7779
+   31   0.7781
+   32   0.7797
+   33   0.8443

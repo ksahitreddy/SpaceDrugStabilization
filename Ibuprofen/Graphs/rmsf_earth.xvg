@@ -1,0 +1,50 @@
+# This file was created Sun Jul  6 17:44:09 2025
+# Created by:
+#               :-) GROMACS - gmx rmsf, 2021.4-Ubuntu-2021.4-2 (-:
+# 
+# Executable:   /usr/bin/gmx
+# Data prefix:  /usr
+# Working dir:  /home/sahit/IDP/Drug Mols 3D/Ibuprofen/Earth
+# Command line:
+#   gmx rmsf -s md.gro -f md.xtc -o rmsf.xvg
+# gmx rmsf is part of G R O M A C S:
+#
+# Giant Rising Ordinary Mutants for A Clerical Setup
+#
+@    title "RMS fluctuation"
+@    xaxis  label "Atom"
+@    yaxis  label "(nm)"
+@TYPE xy
+    1   0.7014
+    2   0.7191
+    3   0.6110
+    4   0.6156
+    5   0.5757
+    6   0.5596
+    7   0.6144
+    8   0.6532
+    9   0.6985
+   10   0.5814
+   11   0.6155
+   12   0.5914
+   13   0.6180
+   14   0.7582
+   15   0.6179
+   16   0.6909
+   17   0.7449
+   18   0.7213
+   19   0.7967
+   20   0.7987
+   21   0.7591
+   22   0.7141
+   23   0.8166
+   24   0.7902
+   25   0.8131
+   26   0.7010
+   27   0.7730
+   28   0.7290
+   29   0.7745
+   30   0.8723
+   31   0.8547
+   32   0.8922
+   33   0.8664

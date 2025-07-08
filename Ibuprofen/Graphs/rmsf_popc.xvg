@@ -1,0 +1,49 @@
+# This file was created Mon Jul  7 11:49:35 2025
+# Created by:
+#               :-) GROMACS - gmx rmsf, 2021.4-Ubuntu-2021.4-2 (-:
+# 
+# Executable:   /usr/bin/gmx
+# Data prefix:  /usr
+# Working dir:  /home/sahit/IDP/Drug Mols 3D/Ibuprofen/charmm-gui-4957825172/gromacs
+# Command line:
+#   gmx rmsf -s md.gro -f md.xtc -o rmsf.xvg
+# gmx rmsf is part of G R O M A C S:
+#
+# Gnomes, ROck Monsters And Chili Sauce
+#
+@    title "RMS fluctuation"
+@    xaxis  label "Atom"
+@    yaxis  label "(nm)"
+@TYPE xy
+    1   0.1161
+    2   0.1590
+    3   0.0332
+    4   0.0662
+    5   0.0400
+    6   0.0372
+    7   0.0594
+    8   0.1085
+    9   0.1417
+   10   0.1216
+   11   0.1209
+   12   0.1271
+   13   0.1140
+   14   0.1595
+   15   0.0558
+   16   0.1247
+   17   0.1216
+   18   0.1194
+   19   0.1386
+   20   0.1671
+   21   0.1633
+   22   0.1542
+   23   0.2089
+   24   0.1942
+   25   0.1895
+   26   0.2074
+   27   0.2123
+   28   0.2197
+   29   0.2003
+   30   0.2057
+   31   0.2196
+   32   0.2172
