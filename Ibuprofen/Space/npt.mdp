@@ -1,0 +1,41 @@
+; npt.mdp - NPT equilibration for microgravity or ISS-like environment
+
+integrator      = md
+nsteps          = 50000        ; 100 ps at 2 fs
+dt              = 0.002
+
+; Output control
+nstxout         = 1000
+nstvout         = 1000
+nstenergy       = 1000
+nstlog          = 1000
+
+; Neighbor searching
+cutoff-scheme   = Verlet
+nstlist         = 10
+ns_type         = grid
+rlist           = 1.0
+rcoulomb        = 1.0
+rvdw            = 1.0
+coulombtype     = PME
+
+; Temperature coupling
+tcoupl          = V-rescale
+tc-grps         = System
+tau_t           = 0.1
+ref_t           = 310
+
+; Pressure coupling
+pcoupl          = Parrinello-Rahman
+pcoupltype      = isotropic
+ref_p           = 1.0
+tau_p           = 2.0
+compressibility = 4.5e-5
+
+; Constraints
+constraints     = h-bonds
+constraint_algorithm = LINCS
+
+; Periodic boundaries
+pbc             = xyz
+

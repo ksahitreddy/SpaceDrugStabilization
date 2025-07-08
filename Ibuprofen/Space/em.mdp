@@ -1,0 +1,27 @@
+; Energy minimization parameters
+integrator    = steep       ; Algorithm: steepest descent
+emtol         = 1000.0      ; Stop minimization when max force < 1000 kJ/mol/nm
+emstep        = 0.01        ; Step size
+nsteps        = 50000       ; Maximum number of minimization steps
+
+; Output control
+nstenergy     = 10
+energygrps    = System
+
+; Neighbor searching
+cutoff-scheme = Verlet
+nstlist       = 10
+ns_type       = grid
+rlist         = 1.0
+
+; Electrostatics and VDW
+coulombtype   = PME
+rcoulomb      = 1.0
+rvdw          = 1.0
+
+; Constraints (none during minimization)
+constraints   = none
+
+; Dispersion correction
+DispCorr      = EnerPres
+
