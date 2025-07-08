@@ -1,0 +1,26 @@
+; ions.mdp - GROMACS configuration for adding ions
+; Used for neutralizing the system before equilibration
+
+;define          = -DPOSRES  ; (Optional: If position restraints are needed)
+integrator      = steep     ; Energy minimization algorithm
+nsteps          = 5000      ; Number of steps (short minimization)
+emtol           = 100.0     ; Stop minimization when Fmax < 1000 kJ/mol/nm
+emstep          = 0.01      ; Energy step size
+
+; Neighbor searching
+cutoff-scheme   = Verlet    ; Modern cutoff scheme
+nstlist         = 10        ; Update neighbor list every 10 steps
+rlist           = 1.0       ; Short-range cutoff (nm)
+
+; Electrostatics and van der Waals
+coulombtype     = PME       ; Particle Mesh Ewald for electrostatics
+rcoulomb        = 1.0       ; Coulomb cutoff (nm)
+vdwtype         = Cut-off   ; Van der Waals type
+rvdw            = 1.0       ; VdW cutoff (nm)
+
+; No temperature/pressure coupling (minimization only)
+tcoupl          = no        ; No thermostat
+pcoupl          = no        ; No barostat
+
+; Constraints (none for ions, but can be added if needed)
+constraints     = none      ; No constraints during ion placement
