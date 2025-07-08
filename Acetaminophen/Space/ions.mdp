@@ -1,0 +1,25 @@
+; ions.mdp - Ion neutralization under microgravity-like conditions
+; Compatible with GROMACS 2021.4
+
+; Run control
+define                  = -DZERO_GRAVITY  ; Disable gravitational effects
+integrator              = steep           ; Energy minimization
+nsteps                  = 5000            ; Fewer steps for ion placement
+emtol                   = 100.0           ; Tolerance (kJ/mol/nm)
+emstep                  = 0.01            ; Initial step size
+
+; Non-bonded interactions
+cutoff-scheme           = Verlet          ; Modern cutoff
+nstlist                 = 10              ; Neighborlist update frequency
+rlist                   = 1.0             ; Short-range cutoff (nm)
+coulombtype             = PME             ; Particle Mesh Ewald
+rcoulomb                = 1.0             ; Coulomb cutoff (nm)
+vdwtype                 = Cut-off         ; Van der Waals
+rvdw                    = 1.0             ; VdW cutoff (nm)
+
+; No temperature/pressure coupling (minimization only)
+tcoupl                  = no              ; Disabled
+pcoupl                  = no              ; Disabled
+
+; Constraints
+constraints             = none            ; No constraints during ion placement
