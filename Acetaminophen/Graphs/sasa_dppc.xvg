@@ -1,0 +1,35 @@
+# This file was created Sun Jul  6 19:10:07 2025
+# Created by:
+#               :-) GROMACS - gmx sasa, 2021.4-Ubuntu-2021.4-2 (-:
+# 
+# Executable:   /usr/bin/gmx
+# Data prefix:  /usr
+# Working dir:  /home/sahit/IDP/Drug Mols 3D/Acitaminophen/charmm-gui-4957825172/gromacs
+# Command line:
+#   gmx sasa -s md.gro -f md.xtc -o sasa.xvg
+# gmx sasa is part of G R O M A C S:
+#
+# Gromacs Runs On Most of All Computer Systems
+#
+@    title "Solvent Accessible Surface"
+@    xaxis  label "Time (ps)"
+@    yaxis  label "Area (nm\S2\N)"
+@TYPE xy
+@ view 0.15, 0.15, 0.75, 0.85
+@ legend on
+@ legend box on
+@ legend loctype view
+@ legend 0.78, 0.8
+@ legend length 2
+@ s0 legend "Total"
+      0.000    3.495
+    100.000    3.532
+    200.000    3.408
+    300.000    3.630
+    400.000    3.382
+    500.000    3.271
+    600.000    3.460
+    700.000    3.468
+    800.000    3.463
+    900.000    3.336
+   1000.000    3.744

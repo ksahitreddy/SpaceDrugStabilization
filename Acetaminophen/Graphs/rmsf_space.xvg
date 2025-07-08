@@ -1,0 +1,37 @@
+# This file was created Mon Jul  7 11:18:05 2025
+# Created by:
+#               :-) GROMACS - gmx rmsf, 2021.4-Ubuntu-2021.4-2 (-:
+# 
+# Executable:   /usr/bin/gmx
+# Data prefix:  /usr
+# Working dir:  /home/sahit/IDP/Drug Mols 3D/Acitaminophen/Space
+# Command line:
+#   gmx rmsf -s md.gro -f md.xtc -o rmsf.xvg
+# gmx rmsf is part of G R O M A C S:
+#
+# Green Red Orange Magenta Azure Cyan Skyblue
+#
+@    title "RMS fluctuation"
+@    xaxis  label "Atom"
+@    yaxis  label "(nm)"
+@TYPE xy
+    1   0.5909
+    2   0.6004
+    3   0.5121
+    4   0.4841
+    5   0.5257
+    6   0.5198
+    7   0.5790
+    8   0.5512
+    9   0.5378
+   10   0.5117
+   11   0.5846
+   12   0.7323
+   13   0.6719
+   14   0.6438
+   15   0.7603
+   16   0.6732
+   17   0.7661
+   18   0.7435
+   19   0.7447
+   20   0.7399

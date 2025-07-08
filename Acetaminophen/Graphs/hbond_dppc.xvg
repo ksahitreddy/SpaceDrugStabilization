@@ -1,0 +1,36 @@
+# This file was created Sat Jul  5 23:44:36 2025
+# Created by:
+#              :-) GROMACS - gmx hbond, 2021.4-Ubuntu-2021.4-2 (-:
+# 
+# Executable:   /usr/bin/gmx
+# Data prefix:  /usr
+# Working dir:  /home/sahit/IDP/Drug Mols 3D/Acitaminophen/charmm-gui-4957825172/gromacs
+# Command line:
+#   gmx hbond -s step7.tpr -f md.xtc -num hbond.xvg
+# gmx hbond is part of G R O M A C S:
+#
+# Good ROcking Metal Altar for Chronical Sinners
+#
+@    title "Hydrogen Bonds"
+@    xaxis  label "Time (ps)"
+@    yaxis  label "Number"
+@TYPE xy
+@ view 0.15, 0.15, 0.75, 0.85
+@ legend on
+@ legend box on
+@ legend loctype view
+@ legend 0.78, 0.8
+@ legend length 2
+@ s0 legend "Hydrogen bonds"
+@ s1 legend "Pairs within 0.35 nm"
+         0           0           0
+       100           0           0
+       200           0           0
+       300           1           1
+       400           1           1
+       500           2           2
+       600           2           2
+       700           2           2
+       800           2           2
+       900           2           2
+      1000           2           2

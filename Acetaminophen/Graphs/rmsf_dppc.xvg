@@ -1,0 +1,37 @@
+# This file was created Sat Jul  5 23:40:52 2025
+# Created by:
+#               :-) GROMACS - gmx rmsf, 2021.4-Ubuntu-2021.4-2 (-:
+# 
+# Executable:   /usr/bin/gmx
+# Data prefix:  /usr
+# Working dir:  /home/sahit/IDP/Drug Mols 3D/Acitaminophen/charmm-gui-4957825172/gromacs
+# Command line:
+#   gmx rmsf -s md.gro -f md.xtc -o rmsf.xvg
+# gmx rmsf is part of G R O M A C S:
+#
+# Great Red Oystrich Makes All Chemists Sane
+#
+@    title "RMS fluctuation"
+@    xaxis  label "Atom"
+@    yaxis  label "(nm)"
+@TYPE xy
+    1   0.0139
+    2   0.0377
+    3   0.0212
+    4   0.0099
+    5   0.0259
+    6   0.0178
+    7   0.0174
+    8   0.0208
+    9   0.0082
+   10   0.0061
+   11   0.0186
+   12   0.0310
+   13   0.0372
+   14   0.0451
+   15   0.0283
+   16   0.0347
+   17   0.0368
+   18   0.0857
+   19   0.1034
+   20   0.1097

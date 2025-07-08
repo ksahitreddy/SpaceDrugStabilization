@@ -1,0 +1,29 @@
+# This file was created Sat Jul  5 23:40:00 2025
+# Created by:
+#               :-) GROMACS - gmx rms, 2021.4-Ubuntu-2021.4-2 (-:
+# 
+# Executable:   /usr/bin/gmx
+# Data prefix:  /usr
+# Working dir:  /home/sahit/IDP/Drug Mols 3D/Acitaminophen/charmm-gui-4957825172/gromacs
+# Command line:
+#   gmx rms -s md.gro -f md.xtc -o rmsd.xvg
+# gmx rms is part of G R O M A C S:
+#
+# Great Red Oystrich Makes All Chemists Sane
+#
+@    title "RMSD"
+@    xaxis  label "Time (ps)"
+@    yaxis  label "RMSD (nm)"
+@TYPE xy
+@ subtitle "ACI after lsq fit to ACI"
+   0.0000000    0.0261306
+ 100.0000000    0.0315856
+ 200.0000000    0.0406793
+ 300.0000000    0.0282580
+ 400.0000000    0.0178277
+ 500.0000000    0.0341287
+ 600.0000000    0.0295505
+ 700.0000000    0.0406299
+ 800.0000000    0.0343735
+ 900.0000000    0.0335102
+1000.0000000    0.0000003
