@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>👨‍🚀 AI-Powered Astronaut Medical Advisor</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url("{{ url_for('static', filename='images/space.jpg') }}");
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #ffffff;
+        }
+        .container {
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+        .result-section {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .paper-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        .search-result {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        .loading-spinner {
+            display: none;
+            width: 3rem;
+            height: 3rem;
+            margin: 2rem auto;
+        }
+        #recommendation {
+            white-space: pre-line;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mb-4">👨‍🚀 AI-Powered Astronaut Medical Advisor</h1>
+        <p class="text-center mb-4">Enter astronaut's symptoms or mission parameters to get medical recommendations based on research and web search.</p>
+        
+        {% if not groq_api_key %}
+        <div class="alert alert-warning">
+            <strong>Warning:</strong> GROQ_API_KEY is not configured. LLM recommendations will not function.
+        </div>
+        {% endif %}
+        
+        {% if not google_api_configured %}
+        <div class="alert alert-warning">
+            <strong>Warning:</strong> Google Search API keys are not configured. Web search integration will not function.
+        </div>
+        {% endif %}
+        
+        <div class="mb-4">
+            <label for="userQuery" class="form-label">Describe the astronaut's symptoms or mission parameters:</label>
+            <textarea class="form-control" id="userQuery" rows="4" 
+                      placeholder="E.g., 'Persistent nausea and mild headache after treadmill in microgravity. What OTC remedies are safe?'"></textarea>
+        </div>
+        
+        <div class="text-center mb-4">
+            <button id="getRecommendationBtn" class="btn btn-primary btn-lg">Get Recommendation</button>
+        </div>
+        
+        <div id="loading" class="text-center">
+            <div class="spinner-border text-primary loading-spinner" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+        
+        <div id="errorAlert" class="alert alert-danger d-none" role="alert"></div>
+        
+        <div id="results" class="d-none">
+            <div id="papersSection" class="result-section mb-4">
+                <h3>Relevant Research Found:</h3>
+                <div id="papersList"></div>
+                <p id="noPapers" class="text-muted">No highly relevant papers found in the internal database.</p>
+            </div>
+            
+            <div id="searchResultsSection" class="result-section mb-4">
+                <h3>Relevant Online Search Results:</h3>
+                <div id="searchResultsList"></div>
+                <p id="noSearchResults" class="text-muted">No relevant online search results found.</p>
+            </div>
+            
+            <div class="result-section">
+                <h3>AI-Generated Recommendation:</h3>
+                <div id="recommendation" class="mt-3"></div>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="text-center text-muted py-3">
+        Built with Chroma DB, Groq API, Google Custom Search, and Flask.
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const getRecommendationBtn = document.getElementById('getRecommendationBtn');
+            const userQuery = document.getElementById('userQuery');
+            const loadingSpinner = document.querySelector('.loading-spinner');
+            const errorAlert = document.getElementById('errorAlert');
+            const resultsDiv = document.getElementById('results');
+            const papersList = document.getElementById('papersList');
+            const noPapers = document.getElementById('noPapers');
+            const searchResultsList = document.getElementById('searchResultsList');
+            const noSearchResults = document.getElementById('noSearchResults');
+            const recommendationDiv = document.getElementById('recommendation');
+            
+            getRecommendationBtn.addEventListener('click', async function() {
+                const query = userQuery.value.trim();
+                
+                if (!query) {
+                    showError("Please enter a query to get a recommendation.");
+                    return;
+                }
+                
+                // Show loading state
+                loadingSpinner.style.display = 'block';
+                errorAlert.classList.add('d-none');
+                resultsDiv.classList.add('d-none');
+                
+                try {
+                    const response = await fetch('/get_recommendation', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ query: query })
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (!response.ok) {
+                        throw new Error(data.error || 'An error occurred');
+                    }
+                    
+                    // Display results
+                    displayResults(data);
+                    
+                } catch (error) {
+                    showError(error.message || 'An error occurred while fetching the recommendation.');
+                } finally {
+                    loadingSpinner.style.display = 'none';
+                }
+            });
+            
+            function displayResults(data) {
+                // Clear previous results
+                papersList.innerHTML = '';
+                searchResultsList.innerHTML = '';
+                
+                // Display papers
+                if (data.papers && data.papers.length > 0) {
+                    noPapers.classList.add('d-none');
+                    data.papers.forEach((paper, index) => {
+                        const paperElement = document.createElement('div');
+                        paperElement.className = 'paper-card mb-3';
+                        paperElement.innerHTML = `
+                            <h5>${index + 1}. ${paper.title}</h5>
+                            <p class="text-muted">Filename: ${paper.filename} | Relevance: ${paper.relevance_distance.toFixed(4)}</p>
+                            <p>${paper.full_content.substring(0, 300)}...</p>
+                        `;
+                        papersList.appendChild(paperElement);
+                    });
+                } else {
+                    noPapers.classList.remove('d-none');
+                }
+                
+                // Display search results
+                if (data.search_results && data.search_results.length > 0) {
+                    noSearchResults.classList.add('d-none');
+                    data.search_results.forEach((result, index) => {
+                        const resultElement = document.createElement('div');
+                        resultElement.className = 'search-result mb-3';
+                        resultElement.innerHTML = `
+                            <h5>${index + 1}. <a href="${result.link}" target="_blank" class="text-white">${result.title}</a></h5>
+                            <p>${result.snippet}</p>
+                        `;
+                        searchResultsList.appendChild(resultElement);
+                    });
+                } else {
+                    noSearchResults.classList.remove('d-none');
+                }
+                
+                // Display recommendation with proper formatting
+                if (data.recommendation) {
+                    // First, replace double newlines with paragraphs
+                    let formattedText = data.recommendation
+                        .replace(/\n\s*\n/g, '</p><p>')  // Double newlines become paragraph breaks
+                        .replace(/\n/g, '<br>');      // Single newlines become line breaks
+                    
+                    // Wrap in paragraph tags if not already done
+                    if (!formattedText.startsWith('<p>')) {
+                        formattedText = '<p>' + formattedText + '</p>';
+                    }
+                    
+                    // Handle bold text (text between ** **)
+                    formattedText = formattedText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                    
+                    // Handle numbered lists
+                    formattedText = formattedText.replace(/(\d+\.\s+.*?)(?=\d+\.\s|$)/gs, function(match) {
+                        return '<li>' + match.replace(/^\d+\.\s+/, '') + '</li>';
+                    });
+                    
+                    // Replace any list items that might have been created
+                    formattedText = formattedText.replace(/<p><li>/g, '<ul><li>');
+                    formattedText = formattedText.replace(/<\/li><\/p>/g, '</li></ul>');
+                    
+                    // Fix any remaining list formatting issues
+                    formattedText = formattedText.replace(/<\/li>\s*<li>/g, '</li><li>');
+                    
+                    recommendationDiv.innerHTML = formattedText;
+                } else {
+                    recommendationDiv.textContent = 'No recommendation available.';
+                }
+                
+                // Show results section
+                resultsDiv.classList.remove('d-none');
+                
+                // Scroll to results
+                resultsDiv.scrollIntoView({ behavior: 'smooth' });
+            }
+            
+            function showError(message) {
+                errorAlert.textContent = message;
+                errorAlert.classList.remove('d-none');
+                resultsDiv.classList.add('d-none');
+                
+                // Scroll to error
+                errorAlert.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
