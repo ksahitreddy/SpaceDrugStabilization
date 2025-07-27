@@ -9,17 +9,17 @@ from transformers import AutoTokenizer
 CHROMA_DB_PATH = "./chroma_db_data"
 
 # Groq API Configuration
-GROQ_API_KEY = os.getenv("GROQ_API_KEY") or "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"
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 API_URL = "https://api.groq.com/openai/v1/chat/completions"
 MODEL_NAME = "meta-llama/llama-4-scout-17b-16e-instruct"
 SYSTEM_PROMPT = """You are an AI assistant specializing in medical countermeasures for astronauts in space missions.
 You provide recommendations for over-the-counter drugs, appropriate dosage forms, and suitable packaging materials
-based on symptoms/mission parameters and medical research."""
+based on symptoms/mission parameters and medical research. Use tables if necessary."""
 MAX_CONTEXT_TOKENS = 4000  # Reduced from 8192 to leave room for response
 
 # Google Custom Search API Credentials
-GOOGLE_API_KEY = "AIzaSyDhQRS0tccUHDoGMlxl7OUccsvDVcKqkkQ"
-GOOGLE_CSE_ID = "336fd9d8ab2a34781"  # Keep your actual CX ID here
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+GOOGLE_CSE_ID = os.getenv("GOOGLE_CSE_ID")  # Keep your actual CX ID here
 
 # Initialize tokenizer for counting tokens
 try:
