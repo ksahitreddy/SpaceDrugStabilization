@@ -1,4 +1,0 @@
-gemini_api = "AIzaSyD5eTn0XkIR6ui7f0L8PZUJ6bbfPrqs30Y"
-email for service account = ai-med-rec@ai-med-rec-system.iam.gserviceaccount.com
-GOOGLE_API_KEY = "AIzaSyB1no1FwjzfW6ylAC1QKJ4VF4io3JGc4Ck"
-GOOGLE_CS_ID = "84748ce892e554a36"
